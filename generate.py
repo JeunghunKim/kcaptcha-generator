@@ -167,7 +167,7 @@ def main():
     args = parse_args()
     if not args.use_existing_server:
         proc = run_kcaptcha_server(KCAPTCHA_DIR, PORT)
-    time.sleep(0.2)
+        time.sleep(0.2)
 
     dataset_dir = pathlib.Path(args.dataset_dir)
     trainset_dir = dataset_dir / TRAINSET_DIR
@@ -226,6 +226,9 @@ def main():
             raise
 
     print("[+] Done")
+    if not args.use_existing_server:
+        proc.kill()
+        time.sleep(0.2)
 
 
 if __name__ == "__main__":
