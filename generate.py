@@ -1,3 +1,5 @@
+import time
+
 from argparse import ArgumentParser
 import subprocess as sp
 import random
@@ -20,7 +22,7 @@ TESTSET_DIR = "test"
 VALIDATIONSET_DIR = "validation"
 DATASET_SIZE = 10000
 TRAIN_TEST_RATIO = 0.8
-NUM_DIGITS = 2
+NUM_DIGITS = 4
 
 
 def parse_args():
@@ -139,7 +141,7 @@ def generate_data(count, download_dir, port, chars, length, verbose=True, prepro
                 print("Invalid:", bbox)
         with open((download_dir / ("%s_%.6d.json" % (target, i))).as_posix(), "w") as f:
             f.write(json.dumps(annotation, indent=2))
-            
+
 
         if verbose and i % 1000 == 0:
             print(f"[{dirname}]: {i}")
@@ -157,7 +159,7 @@ def preprocess_img(sz=(96, 96)):
         img = preprocess.resize_img(img, sz)
         img = preprocess.filter_img(img)
         return img
-    
+
     return _preprocess
 
 
@@ -165,6 +167,7 @@ def main():
     args = parse_args()
     if not args.use_existing_server:
         proc = run_kcaptcha_server(KCAPTCHA_DIR, PORT)
+    time.sleep(0.2)
 
     dataset_dir = pathlib.Path(args.dataset_dir)
     trainset_dir = dataset_dir / TRAINSET_DIR
