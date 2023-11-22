@@ -15,7 +15,7 @@ __Sample Images__
 ## Prerequisite
 
 - php8.2, php-gd
-- python3
+- python3.8.13
 
 ### Ubuntu
 
