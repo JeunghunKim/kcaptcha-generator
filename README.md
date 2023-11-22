@@ -14,21 +14,13 @@ __Sample Images__
 
 ## Prerequisite
 
-- php, php-gd
+- php8.2, php-gd
 - python3
 
 ### Ubuntu
 
 ```sh
-sudo apt-get install php7.2-cli php-gd
-pip install -r requirements.txt
-```
-
-### Windows
-
-```sh
-choco install php --version=7.2.18 -y
-# uncomment ;extension=gd2 in php.ini
+sudo apt-get install php-cli php-gd
 pip install -r requirements.txt
 ```
 
